@@ -69,11 +69,15 @@ const displayCategoryProduct=(products)=>{
         return;
     }
     products.forEach(product => {
-
+      
         const btnDiv=document.createElement("div");
         btnDiv.innerHTML=`
             <div class="bg-white rounded-xl shadow p-4">
             <img src="${product.image}" class="h-60 mx-auto object-contain">
+            <div class="flex justify-between">
+                <p class="text-indigo-600 font-bold">${product.category}</p>
+                <p class=" font-bold"><i class="fa-regular fa-star"></i>${product.rating.rate}</p>
+            </div>
             <h3 class="font-semibold mt-4">${product.title}</h3>
             <p class="text-indigo-600 font-bold">${product.price}</p>
             <div class="flex justify-between mt-4">
