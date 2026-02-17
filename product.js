@@ -81,7 +81,10 @@ const displayCategoryProduct=(products)=>{
             <h3 class="font-semibold mt-4">${product.title}</h3>
             <p class="text-indigo-600 font-bold">${product.price}</p>
             <div class="flex justify-between mt-4">
-            <button class="border px-4 py-2 rounded-lg text-sm">Details</button>
+            <button onclick="showDetails(${product.id})"
+            class="border px-4 py-2 rounded-lg text-sm">
+                 Details
+          </button>
             <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm">Add</button>
             </div>
            </div>
@@ -89,4 +92,33 @@ const displayCategoryProduct=(products)=>{
          productContainer.append(btnDiv)
     });
 }
+
+const showDetails = (id) => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+        .then(res => res.json())
+        .then(product => {
+
+            const modalContent = document.getElementById("modal-content");
+
+            modalContent.innerHTML = `
+                <img src="${product.image}" 
+                     class="h-60 mx-auto object-contain mb-4">
+
+                <h2 class="text-xl font-bold mb-2">
+                    ${product.title}
+                </h2>
+
+                <p class="text-gray-600 mb-4">
+                    ${product.description}
+                </p>
+
+                <p class="text-indigo-600 font-bold text-lg">
+                    $${product.price}
+                </p>
+            `;
+
+            document.getElementById("product_modal").showModal();
+        });
+};
+
 loadCategory();
