@@ -1,3 +1,5 @@
+// Tending Items Code
+
 const loadTending =()=>{
     fetch('https://fakestoreapi.com/products')
       .then(response => response.json())
@@ -21,7 +23,7 @@ const displayTending =(items)=>{
  
     items.slice(0,3).forEach(item => {
    
-        console.log(item)
+        //console.log(item)
         const btnDiv=document.createElement("div");
         btnDiv.innerHTML=`
             <div class="bg-white rounded-xl shadow p-4">
@@ -40,3 +42,5 @@ const displayTending =(items)=>{
  }
 
  loadTending();
+
+ 
